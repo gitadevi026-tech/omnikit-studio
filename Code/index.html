@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#dce5e8">
+    <meta name="description" content="OmniKit Studio — an offline-ready desktop workspace for everyday utilities.">
+    <title>OmniKit Studio — Your workspace</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="app-shell tactile-shell" aria-label="OmniKit Studio workspace">
+      <header class="topbar">
+        <a class="brand" href="#home-view" data-view="home" aria-label="OmniKit Studio home">
+          <span class="brand-mark">✳</span>
+          <span class="brand-copy"><strong>OmniKit Studio</strong><small>YOUR PERSONAL WORKSPACE</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <button class="nav-tab active" data-view="home"><span class="nav-icon">⌂</span><span>Home</span></button>
+          <button class="nav-tab" data-view="tools"><span class="nav-icon">▦</span><span>My tools</span></button>
+          <button class="nav-tab" data-view="activity"><span class="nav-icon">♧</span><span>Activity</span></button>
+          <button class="nav-tab" data-view="settings"><span class="nav-icon">⚙</span><span>Settings</span></button>
+        </nav>
+        <div class="top-actions">
+          <span class="offline-badge"><i></i> Offline ready</span>
+        </div>
+      </header>
+
+      <section class="dashboard" id="home-view">
+        <aside class="left-column">
+          <section class="card profile-card">
+            <div class="eyebrow"><span class="live-dot"></span> YOUR WORKSPACE</div>
+            <h1>Everything<br>in one place.</h1>
+            <p>Your everyday tools, ready whenever you are.</p>
+            <button class="primary-button" data-open-tool="organizer">Get started <span>↗</span></button>
+            <div class="profile-foot"><span class="avatar-small">O</span><span><b>OmniKit Studio</b><small>Private &amp; on this device</small></span></div>
+          </section>
+
+          <section class="quick-actions" aria-label="Quick actions">
+            <button class="quick-action" data-open-tool="notes"><span class="quick-icon blue">＋</span><span><b>New task</b><small>Stay on track</small></span><span class="arrow">›</span></button>
+            <button class="quick-action" data-open-tool="qr"><span class="quick-icon slate">⌁</span><span><b>Make a QR code</b><small>Share something</small></span><span class="arrow">›</span></button>
+            <button class="quick-action" data-open-tool="converter"><span class="quick-icon violet">⇄</span><span><b>Quick convert</b><small>Units, in a snap</small></span><span class="arrow">›</span></button>
+          </section>
+
+          <section class="card tools-card">
+            <div class="section-heading"><div><span class="eyebrow">YOUR TOOLKIT</span><h2>Quick access</h2></div><button class="text-button" data-view="tools">All tools <span>→</span></button></div>
+            <div class="tool-shortcuts" id="tool-shortcuts"></div>
+          </section>
+        </aside>
+
+        <section class="main-column">
+          <div class="welcome-row">
+            <div><div class="eyebrow" id="today-label">THURSDAY, OCTOBER 15</div><h2>Good to see you <span class="wave">✦</span></h2><p>A little progress goes a long way.</p></div>
+            <button class="icon-button" id="refresh-button" aria-label="Refresh dashboard" title="Refresh dashboard">↻</button>
+          </div>
+
+          <div class="metric-row">
+            <article class="card metric-card trend-card">
+              <div class="metric-top"><div><span class="eyebrow">SYSTEM PULSE</span><div class="metric-value"><span id="cpu-value">—</span><small>%</small></div></div><span class="metric-icon blue">⌁</span></div>
+              <div class="chart-wrap">
+                <svg class="line-chart" viewBox="0 0 360 80" preserveAspectRatio="none" aria-label="Recent CPU activity">
+                  <defs><linearGradient id="line-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4168ee" stop-opacity=".2"/><stop offset="1" stop-color="#4168ee" stop-opacity="0"/></linearGradient></defs>
+                  <path class="chart-fill" d=""/>
+                  <path class="chart-line" d=""/>
+                  <circle class="chart-current-halo" cx="360" cy="72" r="8"/>
+                  <circle class="chart-current-point" cx="360" cy="72" r="4.5"/>
+                </svg>
+              </div>
+              <div class="chart-legend"><span>Live device usage</span><span class="legend-value"><i></i><span id="cpu-caption">Updating…</span></span></div>
+            </article>
+            <article class="card memory-card">
+              <div class="metric-top"><div><span class="eyebrow">MEMORY</span><div class="metric-value"><span id="ram-value">—</span><small>%</small></div></div><span class="metric-icon lilac">◒</span></div>
+              <div class="memory-track"><span id="ram-bar"></span><i></i></div>
+              <div class="chart-legend"><span id="ram-caption">System memory</span><span class="legend-value">In use</span></div>
+            </article>
+          </div>
+
+          <div class="insight-row">
+            <article class="card focus-card">
+              <div class="section-heading"><div><span class="eyebrow">YOUR DAY</span><h2>Little wins add up</h2></div><span class="date-chip">TODAY</span></div>
+              <div class="focus-content">
+                <div class="donut" id="task-donut"><div class="donut-center"><strong id="task-percent">0%</strong><small>complete</small></div></div>
+                <div class="focus-copy"><strong id="task-count">0 of 0 tasks</strong><span id="task-summary">Add a task to get started.</span><button class="inline-link" data-open-tool="notes">View your list <span>→</span></button></div>
+              </div>
+              <div class="focus-foot"><span class="tiny-check">✓</span><span id="focus-foot-copy">Make today count, one task at a time.</span></div>
+            </article>
+
+            <article class="card storage-card">
+              <div class="section-heading"><div><span class="eyebrow">THIS DEVICE</span><h2>Storage</h2></div><span class="health-mark">✳</span></div>
+              <div class="storage-number"><strong id="disk-value">—</strong><span>%</span><small>storage used</small></div>
+              <div class="storage-bars" id="storage-bars" role="img" aria-label="Waiting for live storage samples">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="chart-legend"><span id="device-name">Device</span><span class="device-status"><i></i> Waiting</span></div>
+            </article>
+          </div>
+
+          <article class="card timeline-card">
+            <div class="section-heading timeline-heading"><div><span class="eyebrow">YOUR TOOLBOX</span><h2>Pick up where you left off</h2></div><button class="text-button" data-view="tools">Explore tools <span>→</span></button></div>
+            <div class="tool-timeline" id="tool-timeline"></div>
+          </article>
+          <footer class="status-footer"><span><i class="live-dot"></i><span id="engine-status">Connecting to local engine…</span></span><span id="system-caption">Your data stays on this device</span></footer>
+        </section>
+      </section>
+
+      <section class="tools-view hidden" id="tools-view">
+        <div class="page-heading"><div><span class="eyebrow">MADE FOR YOUR EVERYDAY</span><h1>Your toolkit</h1><p>Ten thoughtful tools. One calm little workspace.</p></div><span class="offline-badge"><i></i> Works offline</span></div>
+        <div class="tools-grid" id="all-tools-grid"></div>
+      </section>
+
+      <section class="activity-view hidden" id="activity-view">
+        <div class="page-heading"><div><span class="eyebrow">A LITTLE HISTORY</span><h1>Recent activity</h1><p>Your recent actions stay private on this device.</p></div></div>
+        <div class="card activity-card" id="activity-list"></div>
+      </section>
+
+      <section class="settings-view hidden" id="settings-view">
+        <div class="page-heading"><div><span class="eyebrow">MAKE YOURSELF AT HOME</span><h1>Settings</h1><p>A few details about your local workspace.</p></div></div>
+        <div class="card settings-card"><div><span class="setting-icon">◉</span><span><b>Appearance</b><small>Choose a comfortable look for your workspace.</small></span><button id="theme-toggle" class="toggle-switch" aria-label="Toggle dark mode"><i></i></button></div><div><span class="setting-icon">⌂</span><span><b>Local data</b><small>Your notes, tasks, and vault stay on this computer.</small></span><span class="setting-value">On this device</span></div><div><span class="setting-icon">◌</span><span><b>Internet connection</b><small>Core tools work offline; Network Check needs a connection.</small></span><span class="setting-value online">Online for Network Check</span></div><div><span class="setting-icon">⚙</span><span><b>About OmniKit Studio</b><small id="about-version">A simple, private toolkit for everyday work.</small></span><span class="setting-value">PyWebView app</span></div></div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop hidden" id="tool-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <section class="modal-card"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div class="modal-heading"><span class="modal-icon" id="modal-icon"></span><div><span class="eyebrow" id="modal-kicker">OMNIKIT TOOL</span><h2 id="modal-title">Tool</h2><p id="modal-description"></p></div></div><div class="modal-content" id="modal-content"></div><div class="modal-result hidden" id="modal-result" role="status"></div></section>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "OmniKit Studio",
+  "description": "Commercial-grade 10-in-1 desktop utility suite and Python CustomTkinter power toolkit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
